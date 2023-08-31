@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+  <title>CART control and Order Control</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">ShoppingStore</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="http://localhost:8080/api/pages/index">Home</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Product-Control </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								href="http://localhost:8080/api/pages/AddProduct
+                    ">Add Product</a></li>
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/cartControl">Add
+                        Review</a></li>
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/cartControl">Update
+                        Review</a></li>      
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/getReviews">See
+                        Reviews</a></li>      
+					</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Roles control </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								href="http://localhost:8080/api/pages/superUser
+                    ">Add New role</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/api/pages/superUser">Update role to user</a></li>
+                 <li><a class="dropdown-item" href="http://localhost:8080/api/pages/superUser">Add Category</a></li> 
+					</ul></li>
+					
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Cart Control </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Create a
+								cart</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl
+                   ">Add
+								cart</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Remove
+								Product</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Delete
+								Cart</a></li>
+						
+					</ul></li>
+					
+				<li class="nav-item"><a class="nav-link" style="color: yellow;"
+					href="http://localhost:8080/api/pages/GetUserDetails">User Details</a></li>
+				<li class="nav-item"><a class="nav-link" style="color: green;"
+					href="http://localhost:8080/api/pages/paymentControl">Payment</a></li>
+				<li class="nav-item"><a class="nav-link" style="color: red;"
+					href="http://localhost:8080/api/pages/login">Logout</a></li>
+			</ul>
+			<form class="d-flex">
+				<input class="form-control me-2" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+  <div class="container" style="height:170vh;">
+    <h1 class="my-5">Cart and Order Control</h1>
+    <div class="row">
+      <div class="col">
+        <h2>Create a cart</h2>
+        <form id="CreateCartForm" class="custom-form">
+          <div class="form-group">
+            <label for="userId">Create a cart</label>
+            <input type="text" class="form-control" id="userId" placeholder="Enter user id">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block custom-btn mt-3">Create a cart</button>
+        </form>
+
+        <form id="AddToCartForm" class="custom-form mt-5">
+          <h2>Add to cart</h2>
+          <div class="form-group">
+            <label for="cartId">Enter Cart Id</label>
+            <input type="text" class="form-control" id="cartId">
+
+            <label for="productId">Enter Product ID</label>
+            <input type="text" class="form-control" id="productId">
+
+            <label for="quantity">Enter Quantity</label>
+            <input type="text" class="form-control" id="quantity">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block custom-btn mt-3">Add Item to cart</button>
+        </form>
+
+        <form id="RemoveFromCart" class="custom-form mt-5">
+          <h2>Remove Product from cart</h2>
+          <div class="form-group">
+            <label for="cartItemsId">Enter Cart Items Id</label>
+            <input type="text" class="form-control" id="cartItemsId">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block custom-btn mt-3">Remove Product from cart</button>
+        </form>
+
+        <form id="deleteCart" class="custom-form mt-5">
+          <h2>Delete Cart</h2>
+          <div class="form-group">
+            <label for="enterCartId">Enter Cart Id</label>
+            <input type="text" class="form-control" id="enterCartId">
+          </div>
+          <button type="submit" class="btn btn-danger btn-block custom-btn mt-3">Delete Cart</button>
+        </form>
+      </div>
+<!--////////////////////////////////////////////////////////////////////////////////////-->
+      <div class="col">
+        <h2>Create a Order</h2>
+        <form id="CreateOrderForm" class="custom-form">
+          <div class="form-group">
+            <label for="OrderUserId">Enter User Id</label>
+            <input type="number" class="form-control" id="OrderUserId" placeholder="Enter user id">
+            <label for="OrderCartItemsId">Enter Cart Id</label>
+            <input type="number" class="form-control" id="OrderCartItemsId" placeholder="Enter cart id">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block custom-btn mt-3">Create a order</button>
+        </form>
+
+        <form id="CreateReviewForm" class="custom-form mt-5">
+          <h2>Create a review</h2>
+          <div class="form-group">
+            <label for="reviewUserID">Enter User Id</label>
+            <input type="text" class="form-control" id="reviewUserID">
+
+            <label for="reviewProductId">Enter Product ID</label>
+            <input type="text" class="form-control" id="reviewProductId">
+
+            <label for="rating">Enter Rating</label>
+            <input type="text" class="form-control" id="rating">
+
+            <label for="reviewText">Enter Review Text</label>
+            <input type="text" class="form-control" id="reviewText">
+          </div>
+          <button type="submit" class="btn btn-success btn-block custom-btn mt-3">Create a Review</button>
+        </form>
+
+        <form id="UpdateReviewForm" class="custom-form mt-5">
+            <h2>Update a review</h2>
+            <div class="form-group">
+              <label for="reviewId">Enter Review Id</label>
+              <input type="number" class="form-control" id="reviewId">
+
+              <label for="updreviewUserID">Enter User Id</label>
+              <input type="text" class="form-control" id="updreviewUserID">
+  
+              <label for="updreviewProductId">Enter Product ID</label>
+              <input type="text" class="form-control" id="updreviewProductId">
+  
+              <label for="updrating">Enter Rating</label>
+              <input type="text" class="form-control" id="updrating">
+  
+              <label for="updreviewText">Enter Review Text</label>
+              <input type="text" class="form-control" id="updreviewText">
+            </div>
+            <button type="submit" class="btn btn-warning btn-block custom-btn mt-3">Update a Review</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <footer class="footer mt-auto py-3 bg-dark text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <p>Email: contact@example.com</p>
+          <p>Phone: (123) 456-7890</p>
+        </div>
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>Your company description here.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-light">Facebook</a>
+          <a href="#" class="text-light">Twitter</a>
+          <a href="#" class="text-light">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#CreateCartForm").submit(function (event) {
+      event.preventDefault();
+      
+      const userId = $("#userId").val();
+
+      $.ajax({
+        url: "/api/cart/createCart",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(userId),
+        success: function (response) {
+          console.log("Response:", response);
+          alert("cart created for userId" + userId);
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("Error creating cart");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#AddToCartForm").submit(function (event) {
+      event.preventDefault();
+      
+      const cartId = $("#cartId").val();
+      const productId = $("#productId").val();
+      const quantity = $("#quantity").val();
+
+      const data = {
+        cart_id: { cart_id: parseInt(cartId) },
+        product_id: { product_id: parseInt(productId) },
+        quantity: parseInt(quantity)
+      };
+
+      $.ajax({
+        url: "/api/cart/addToCart",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (response) {
+          console.log("Response:", response);
+          alert("Item Added To Cart");
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("Error Adding items");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#RemoveFromCart").submit(function (event) {
+      event.preventDefault();
+      
+      const cartItemsId = $("#cartItemsId").val();
+
+      $.ajax({
+        url: `/api/cart/removeFromCart/${cartItemsId}`,
+        type: "DELETE",
+        contentType: "application/json",
+        success: function (response) {
+          console.log("Response:", response);
+          alert("Cart Item Deleted")
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("error removing item");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#deleteCart").submit(function (event) {
+      event.preventDefault();
+      
+      const cartId = $("#enterCartId").val();
+
+      $.ajax({
+        url: `/api/cart/DeleteCart/${cartId}`,
+        type: "DELETE",
+        success: function (response) {
+          console.log("Response:", response);
+          alert("CART DELETED");
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("ERROR deleting the cart");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#CreateOrderForm").submit(function (event) {
+      event.preventDefault();
+      
+      const userId = $("#OrderUserId").val();
+      const cartItemsId = $("#OrderCartItemsId").val();
+
+      $.ajax({
+        url: `/api/orders/createOrder/${userId}/${cartItemsId}`,
+        type: "POST",
+        success: function (response) {
+          console.log("Response:", response);
+          alert("Order Created");
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("Error Creating Order");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#CreateReviewForm").submit(function (event) {
+      event.preventDefault();
+      
+      const userId = $("#reviewUserID").val();
+      const productId = $("#reviewProductId").val();
+      const rating = $("#rating").val();
+      const text = $("#reviewText").val();
+
+      const reviewData = {
+        userId: userId,
+        productId: productId,
+        rating: rating,
+        text: text
+      };
+
+      $.ajax({
+        url: "/api/reviews/createReview",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(reviewData),
+        success: function (response) {
+          console.log("Response:", response);
+          alert("REVIEW CREATED");
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("ERROR CREATING REVIEW");
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $("#UpdateReviewForm").submit(function (event) {
+      event.preventDefault();
+
+      const reviewId = $("#reviewId").val();
+      const userId = $("#updreviewUserID").val();
+      const productId = $("#updreviewProductId").val();
+      const rating = $("#updrating").val();
+      const text = $("#updreviewText").val();
+
+      const reviewData = {
+        userId: userId,
+        productId: productId,
+        rating: rating,
+        review_text: text
+      };
+
+      $.ajax({
+        url: `/api/reviews/updateReview/${reviewId}`,
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(reviewData),
+        success: function (response) {
+          console.log("Response:", response);
+          alert("Review Updated");
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          alert("Error Updating Review");
+        }
+      });
+    });
+  });
+</script>
+
+</html>

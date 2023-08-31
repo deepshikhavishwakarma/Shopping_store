@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+
+</style>
+
+<body>
+
+  <div class="container mt-4" id="signup" style="display:block;">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Sign up</h2>
+          </div>
+          <div class="card-body">
+            <form id="signup-form">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="form-group">
+                <label for="shippingAddresss">Shipping Address:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+              </div>
+
+              <div class="form-group">
+                <label for="billingAddress">Billing Address:</label>
+                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+              </div>
+
+              <button type="button" class="btn btn-success btn-block" id="signup-button">Register</button><br>
+              <span>
+                <p>Already Have an Account? Click on Login...</p>
+                <button type="button" class="btn btn-success" id="loginToggleBtn" onClick="toggler()">Login</button>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5" id="login" style="display: none;">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Login</h2>
+          </div>
+          <div class="card-body">
+            <form id="login-form">
+              <div class="form-group">
+                <label for="Loginusername">Username:</label>
+                <input type="text" class="form-control" id="Loginusername" name="Loginusername" required>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="loginPassword" name="password" required>
+              </div>
+
+              <button type="button" class="btn btn-success btn-block" id="login-button">Login</button>
+              <span>
+                <p>Don't have an Account? Click on Register...</p>
+                <button type="button" class="btn btn-success" id="signupToggleBtn" onClick="toggler()">Register</button>
+              </span>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container col-md-4 mt-3 mb-3">
+
+  </div>
+
+  <script>
+    const signup = document.getElementById("signup");
+    const login = document.getElementById("login");
+
+    function toggler() {
+      if (signup.style.display === "block") {
+        signup.style.display = "none";
+        login.style.display = "block";
+      } else {
+        signup.style.display = "block";
+        login.style.display = "none";
+      }
+    };
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const signupForm = document.getElementById("signup-form");
+      const signupButton = document.getElementById("signup-button");
+
+      signupButton.addEventListener("click", function () {
+        const username = document.getElementById("firstName").value;
+        const email = document.getElementById("email").value;
+        const passwordHash = document.getElementById("password").value;
+        const shippingAddress = document.getElementById("lastName").value;
+        const billingAddress = document.getElementById("contactNumber").value;
+
+        const userData = {
+          username: username,
+          email: email,
+          passwordHash: passwordHash,
+          shippingAddress: shippingAddress,
+          billingAddress: billingAddress
+        };
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/user/signup", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              alert("Signup successful! You may login now.");
+            } else {
+              alert("Signup failed. Please try again.");
+            }
+          }
+        };
+
+        xhr.send(JSON.stringify(userData));
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.getElementById("login-form");
+      const loginButton = document.getElementById("login-button");
+
+      loginButton.addEventListener("click", function () {
+        const username = document.getElementById("Loginusername").value;
+        const password = document.getElementById("loginPassword").value;
+
+        const userData = {
+          username: username,
+          passwordHash: password
+        };
+
+        console.log(userData);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/user/login", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              window.location.href = `http://localhost:8080/api/pages/index/${userData.username}`;
+            } else {
+              alert("Login failed. Please check your credentials.");
+            }
+          }
+        };
+
+        xhr.send(JSON.stringify(userData));
+      });
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

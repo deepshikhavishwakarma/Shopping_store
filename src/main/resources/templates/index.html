@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<style>
+  .card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .my-card {
+    margin: 1rem;
+    background-color: #fbfbfb;
+  }
+
+  .my-card img {
+    scale: 0.9;
+  }
+
+  ::-webkit-scrollbar{
+    display: none;
+  }
+</style>
+
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">ShoppingStore</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="http://localhost:8080/api/pages/index">Home</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Product-Control </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								href="http://localhost:8080/api/pages/AddProduct
+                    ">Add Product</a></li>
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/cartControl">Add
+                        Review</a></li>
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/cartControl">Update
+                        Review</a></li>      
+                    <li><a class="dropdown-item"
+                      href="http://localhost:8080/api/pages/getReviews">See
+                        Reviews</a></li>      
+					</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Roles control </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								href="http://localhost:8080/api/pages/superUser
+                    ">Add New role</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/api/pages/superUser">Update role to user</a></li>
+                 <li><a class="dropdown-item" href="http://localhost:8080/api/pages/superUser">Add Category</a></li> 
+					</ul></li>
+					
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Cart Control </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Create a
+								cart</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl
+                   ">Add
+								cart</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Remove
+								Product</a></li>
+						<li><a class="dropdown-item"
+							href="http://localhost:8080/api/pages/cartControl">Delete
+								Cart</a></li>
+						
+					</ul></li>
+					
+				<li class="nav-item"><a class="nav-link" style="color: yellow;"
+					href="http://localhost:8080/api/pages/GetUserDetails">User Details</a></li>
+				<li class="nav-item"><a class="nav-link" style="color: green;"
+					href="http://localhost:8080/api/pages/paymentControl">Payment</a></li>
+				<li class="nav-item"><a class="nav-link" style="color: red;"
+					href="http://localhost:8080/api/pages/login">Logout</a></li>
+			</ul>
+			<form class="d-flex">
+				<input class="form-control me-2" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+  <h2 id="greetingText"></h2>
+</div>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/2b2281c5ae679874.jpg?q=20" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/e5a898f6a95d2172.png?q=20" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/bc1fcb4e4db75861.jpg?q=20" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container" style="padding:1rem; background-color:#CAEDFF; max-width:100vw; margin:0; display:flex;">
+    <a href="http://localhost:8080/api/pages/getAllCategories" class="btn btn-warning" style="margin:0 0.5rem;" >CATEGORIES</a>
+    <a href="http://localhost:8080/api/pages/getAllProducts" class="btn btn-warning" style="margin:0 0.5rem;" >ALL PRODUCTS</a>
+  </div>
+
+  <div class="container mt-5" style="height:100vh;">
+    <div id="productTableBody" style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
+      
+    </div>
+</div>
+
+
+  <footer class="footer mt-auto py-3 bg-dark text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <p>Email: contact@example.com</p>
+          <p>Phone: (123) 456-7890</p>
+        </div>
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>Your company description here.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-light">Facebook</a>
+          <a href="#" class="text-light">Twitter</a>
+          <a href="#" class="text-light">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  const Username = getUsernameFromUrl();
+
+  $.get(`/api/user/getUserByUsername/${Username}`, function(data) {
+    if(data){
+      document.getElementById("greetingText").innerHTML = `Welcome ${data.username}`;
+    }else{
+      document.getElementById("greetingText").innerHTML = "Welcome Anonymous -->  Delivering to : Tell Us more";
+    }
+  });
+  function getUsernameFromUrl() {
+    const urlParts = window.location.href.split("/");
+    return urlParts[urlParts.length - 1];
+  }
+</script>
+
+<script>
+  // Function to fetch and populate the product table
+  function populateProductTable() {
+    const productTableBody = document.getElementById("productTableBody");
+    
+    fetch("/api/products/getAllProducts")
+      .then(response => response.json())
+      .then(data => {
+        productTableBody.innerHTML = "";
+        
+        const maxProductsToShow = 4;
+        let productsAdded = 0;
+
+        data.forEach(product => {
+          if (productsAdded < maxProductsToShow) {
+            const row = document.createElement("div");
+            row.innerHTML = `
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="${product.image_Url}" alt="Card image cap" style="height:250px;">
+                <div class="card-body">
+                  <h5 class="card-title">${product.product_name}</h5>
+                  <p class="card-text">Rs ${product.price.toFixed(2)}</p>
+                  <a href="http://localhost:8080/api/pages/seeProduct/${product.product_id}" class="btn btn-primary">Open</a>
+                </div>
+              </div>
+            `;
+            productTableBody.appendChild(row);
+            productsAdded++;
+          }
+        });
+      })
+      .catch(error => console.error("Error fetching product data:", error));
+  }
+
+  populateProductTable();
+</script>
+
+</html>
